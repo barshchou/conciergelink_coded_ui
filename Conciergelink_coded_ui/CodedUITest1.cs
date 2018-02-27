@@ -28,6 +28,7 @@ namespace Conciergelink_coded_ui
             // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
             this.UIMap.StartCL();
             this.UIMap.LoginToCL();
+            this.UIMap.IsLoggedIn();
             this.UIMap.CloseCL();
         }
 

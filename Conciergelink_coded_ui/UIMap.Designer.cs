@@ -76,6 +76,19 @@ namespace Conciergelink_coded_ui
             Mouse.Click(uIKButton, new Point(8, 13));
         }
         
+        /// <summary>
+        /// IsLoggedIn - Use 'IsLoggedInExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void IsLoggedIn()
+        {
+            #region Variable Declarations
+            WpfComboBox uIItemComboBox = this.UIConciergeLinkWindow.UIItemCustom2.UIZButton.UIItemComboBox;
+            #endregion
+
+            // Verify that the 'ControlType' property of first combo box next to 'Z' button contains 'ComboBox'
+            StringAssert.Contains(uIItemComboBox.ControlType.ToString(), this.IsLoggedInExpectedValues.UIItemComboBoxControlType);
+        }
+        
         #region Properties
         public virtual StartCLParams StartCLParams
         {
@@ -101,6 +114,18 @@ namespace Conciergelink_coded_ui
             }
         }
         
+        public virtual IsLoggedInExpectedValues IsLoggedInExpectedValues
+        {
+            get
+            {
+                if ((this.mIsLoggedInExpectedValues == null))
+                {
+                    this.mIsLoggedInExpectedValues = new IsLoggedInExpectedValues();
+                }
+                return this.mIsLoggedInExpectedValues;
+            }
+        }
+        
         public UIConciergeLinkWindow UIConciergeLinkWindow
         {
             get
@@ -118,6 +143,8 @@ namespace Conciergelink_coded_ui
         private StartCLParams mStartCLParams;
         
         private LoginToCLParams mLoginToCLParams;
+        
+        private IsLoggedInExpectedValues mIsLoggedInExpectedValues;
         
         private UIConciergeLinkWindow mUIConciergeLinkWindow;
         #endregion
@@ -163,6 +190,21 @@ namespace Conciergelink_coded_ui
         #endregion
     }
     
+    /// <summary>
+    /// Parameters to be passed into 'IsLoggedIn'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class IsLoggedInExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'ControlType' property of first combo box next to 'Z' button contains 'ComboBox'
+        /// </summary>
+        public string UIItemComboBoxControlType = "ComboBox";
+        #endregion
+    }
+    
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIConciergeLinkWindow : WpfWindow
     {
@@ -200,12 +242,26 @@ namespace Conciergelink_coded_ui
                 return this.mUIItemCustom1;
             }
         }
+        
+        public UIItemCustom2 UIItemCustom2
+        {
+            get
+            {
+                if ((this.mUIItemCustom2 == null))
+                {
+                    this.mUIItemCustom2 = new UIItemCustom2(this);
+                }
+                return this.mUIItemCustom2;
+            }
+        }
         #endregion
         
         #region Fields
         private UIItemCustom mUIItemCustom;
         
         private UIItemCustom1 mUIItemCustom1;
+        
+        private UIItemCustom2 mUIItemCustom2;
         #endregion
     }
     
@@ -411,6 +467,74 @@ namespace Conciergelink_coded_ui
         
         #region Fields
         private WpfButton mUIKButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIItemCustom2 : WpfCustom
+    {
+        
+        public UIItemCustom2(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfControl.PropertyNames.ClassName] = "Uia.TopLevelNavigationBarView";
+            this.WindowTitles.Add("ConciergeLink");
+            #endregion
+        }
+        
+        #region Properties
+        public UIZButton UIZButton
+        {
+            get
+            {
+                if ((this.mUIZButton == null))
+                {
+                    this.mUIZButton = new UIZButton(this);
+                }
+                return this.mUIZButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIZButton mUIZButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIZButton : WpfButton
+    {
+        
+        public UIZButton(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WpfButton.PropertyNames.Name] = "Z";
+            this.WindowTitles.Add("ConciergeLink");
+            #endregion
+        }
+        
+        #region Properties
+        public WpfComboBox UIItemComboBox
+        {
+            get
+            {
+                if ((this.mUIItemComboBox == null))
+                {
+                    this.mUIItemComboBox = new WpfComboBox(this);
+                    #region Search Criteria
+                    this.mUIItemComboBox.SearchConfigurations.Add(SearchConfiguration.NextSibling);
+                    this.mUIItemComboBox.WindowTitles.Add("ConciergeLink");
+                    #endregion
+                }
+                return this.mUIItemComboBox;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WpfComboBox mUIItemComboBox;
         #endregion
     }
 }
